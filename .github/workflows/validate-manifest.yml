@@ -1,0 +1,28 @@
+name: Validate manifest
+
+on:
+  push:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate manifest.json
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Validate JSON syntax and schema
+        run: npx --yes ajv-cli@5 validate --spec=draft7 --all-errors -s .github/manifest.schema.json -d manifest.json

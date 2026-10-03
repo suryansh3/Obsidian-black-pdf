@@ -17,6 +17,12 @@ The repository also includes the standalone `black-snippet-color.css` snippet fo
 
 The plugin's release version must match the `version` in `manifest.json`.
 
+### Manifest validation
+
+GitHub Actions validates `manifest.json` against `.github/manifest.schema.json` on every
+push and whenever a pull request is opened, updated, or reopened. The workflow checks
+both JSON syntax and the required Obsidian manifest fields.
+
 ## Standalone snippets
 
 | File | How it works | Best for |
