@@ -1,0 +1,10 @@
+{
+  "id": "black-snippet",
+  "name": "Black Code Blocks",
+  "version": "1.0.0",
+  "minAppVersion": "0.15.0",
+  "description": "Makes exported code blocks render as black, terminal-style blocks with adaptive syntax colors.",
+  "author": "Suryansh",
+  "authorUrl": "https://github.com/suryansh3",
+  "isDesktopOnly": false
+}

@@ -1,0 +1,34 @@
+@media print {
+  /* 1. Target the Main Code Block Wrapper */
+  pre, 
+  .markdown-preview-view pre {
+    /* Turn White to Black, and rotate colors to preserve syntax */
+    filter: invert(100%) hue-rotate(180deg) !important;
+    
+    /* Force the "Starting" background to White (so it inverts to Black) */
+    background-color: #ffffff !important;
+    
+    /* Remove borders/shadows so it looks like a clean flat box */
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 5px !important;
+    padding: 10px !important;
+  }
+
+  /* 2. PREVENT DOUBLE INVERSION on the inner code text */
+  /* This fixes the "White Highlight" bug */
+  pre code,
+  .markdown-preview-view pre code {
+    filter: none !important;           /* Stop the second inversion */
+    background-color: transparent !important; /* No white box behind text */
+    color: inherit !important;         /* Let the inverted parent handle colors */
+    border: none !important;
+  }
+
+  /* 3. OPTIONAL: Boost Syntax Contrast */
+  /* Makes the colors pop more on the black background */
+  span.token, .cm-line {
+    font-weight: bold; /* Optional: makes thin fonts clearer on black */
+    text-shadow: 0 0 1px rgba(0,0,0,0.5); /* Adds slight depth */
+  }
+}
