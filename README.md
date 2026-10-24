@@ -17,6 +17,19 @@ The repository also includes the standalone `black-snippet-color.css` snippet fo
 
 The plugin's release version must match the `version` in `manifest.json`.
 
+### Publishing a release
+
+Obsidian installs from the GitHub release whose **tag exactly equals** the `version` in `manifest.json`, with **no `v` prefix** (`1.0.0`, not `v1.0.0`). That release must have `main.js`, `manifest.json` and `styles.css` attached as **release assets**.
+
+`.github/workflows/release.yml` does this automatically. Push a tag (or publish a release on GitHub with that tag) and it verifies the tag against `manifest.json`, then creates the release if needed and attaches the three files:
+
+```bash
+git tag 1.0.0
+git push origin 1.0.0
+```
+
+When bumping the version, update `manifest.json` and add the new entry to `versions.json` first.
+
 ### Manifest validation
 
 GitHub Actions validates `manifest.json` against `.github/manifest.schema.json` on every
